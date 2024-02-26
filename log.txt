@@ -1,0 +1,60 @@
+2024-02-26T09:33:51.768+07:00  INFO 20516 --- [restartedMain] com.first_project.demo.DemoApplication   : Starting DemoApplication using Java 21.0.2 with PID 20516 (C:\Users\O241269\Documents\source\demo\target\classes started by O241269 in C:\Users\O241269\Documents\source\demo)
+2024-02-26T09:33:51.788+07:00  INFO 20516 --- [restartedMain] com.first_project.demo.DemoApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-02-26T09:33:51.903+07:00  INFO 20516 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-02-26T09:33:51.904+07:00  INFO 20516 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-02-26T09:33:53.709+07:00  INFO 20516 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-26T09:33:53.709+07:00  INFO 20516 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-26T09:33:54.112+07:00  INFO 20516 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 388 ms. Found 1 JPA repository interface.
+2024-02-26T09:33:54.175+07:00  INFO 20516 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-02-26T09:33:54.175+07:00  INFO 20516 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-02-26T09:33:54.244+07:00  INFO 20516 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.first_project.demo.infrastructure.repositories.UserRepositories; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2024-02-26T09:33:54.244+07:00  INFO 20516 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 0 Redis repository interfaces.
+2024-02-26T09:33:56.050+07:00  INFO 20516 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-02-26T09:33:56.108+07:00  INFO 20516 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-02-26T09:33:56.108+07:00  INFO 20516 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-02-26T09:33:56.226+07:00  INFO 20516 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-02-26T09:33:56.226+07:00  INFO 20516 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4320 ms
+2024-02-26T09:33:56.556+07:00  INFO 20516 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-26T09:33:56.781+07:00  INFO 20516 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-02-26T09:33:56.877+07:00  INFO 20516 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-02-26T09:33:57.409+07:00  INFO 20516 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-26T09:33:57.482+07:00  INFO 20516 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-02-26T09:33:58.276+07:00  INFO 20516 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5ad1ad8d
+2024-02-26T09:33:58.283+07:00  INFO 20516 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-02-26T09:33:58.469+07:00  WARN 20516 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-02-26T09:34:00.726+07:00  INFO 20516 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-26T09:34:00.934+07:00  INFO 20516 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-26T09:34:01.506+07:00  WARN 20516 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-02-26T09:34:01.970+07:00  WARN 20516 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: b4fcfa94-7426-4961-906a-318de0659a86
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-02-26T09:34:02.365+07:00  INFO 20516 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5faedb6b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@135a5ff4, org.springframework.security.web.context.SecurityContextHolderFilter@2a00c939, org.springframework.security.web.header.HeaderWriterFilter@21f254f8, org.springframework.web.filter.CorsFilter@287f3d0b, org.springframework.security.web.authentication.logout.LogoutFilter@4fe0812c, com.first_project.demo.infrastructure.filter.JwtAuthenticationFilter@34716f4a, com.first_project.demo.infrastructure.filter.LoggingFilter@17945461, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@29526381, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4aa9543c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3ec8a07b, org.springframework.security.web.access.ExceptionTranslationFilter@329b0edb, org.springframework.security.web.access.intercept.AuthorizationFilter@76e9befa]
+2024-02-26T09:34:03.369+07:00  INFO 20516 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-02-26T09:34:03.450+07:00  INFO 20516 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-02-26T09:34:03.466+07:00  INFO 20516 --- [restartedMain] com.first_project.demo.DemoApplication   : Started DemoApplication in 12.898 seconds (process running for 14.091)
+2024-02-26T09:34:20.692+07:00  INFO 20516 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-26T09:34:20.692+07:00  INFO 20516 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-02-26T09:34:20.692+07:00  INFO 20516 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-02-26T09:34:20.725+07:00  INFO 20516 --- [http-nio-8080-exec-2] c.f.d.i.filter.LoggingFilter             : org.springframework.security.web.header.HeaderWriterFilter$HeaderWriterRequest@32ea422d
+2024-02-26T09:34:20.725+07:00  INFO 20516 --- [http-nio-8080-exec-2] c.f.d.i.filter.LoggingFilter             : SecurityContextHolderAwareRequestWrapper[ org.springframework.security.web.header.HeaderWriterFilter$HeaderWriterRequest@32ea422d]
+2024-02-26T09:34:20.941+07:00  INFO 20516 --- [http-nio-8080-exec-2] c.f.demo.domain.services.AuthService     : == start processing request login (check users by email, check match password, generate token) ==
+2024-02-26T09:34:20.949+07:00  INFO 20516 --- [http-nio-8080-exec-2] c.f.demo.domain.services.AuthService     : > check user by email request
+2024-02-26T09:34:21.476+07:00  INFO 20516 --- [http-nio-8080-exec-2] c.f.demo.domain.services.AuthService     : > users data: 
+2024-02-26T09:34:21.484+07:00  INFO 20516 --- [http-nio-8080-exec-2] c.f.demo.domain.services.AuthService     : Users(id=402, fullName=Fikih Alan, email=pikiha52@gmail.com, phoneNumber=6288293061559, password=$2a$10$siMXpkxi2U5fclRnbfWP/eWV5EVgRj1px5KendhyUV4gAzAQ1OFY6, roles=ADMIN, createdAt=2024-02-23)
+2024-02-26T09:34:21.484+07:00  INFO 20516 --- [http-nio-8080-exec-2] c.f.demo.domain.services.AuthService     : < users data 
+2024-02-26T09:34:21.484+07:00  INFO 20516 --- [http-nio-8080-exec-2] c.f.demo.domain.services.AuthService     : > check match password
+2024-02-26T09:34:21.604+07:00  INFO 20516 --- [http-nio-8080-exec-2] c.f.demo.domain.services.AuthService     : false
+2024-02-26T09:34:21.604+07:00  INFO 20516 --- [http-nio-8080-exec-2] c.f.demo.domain.services.AuthService     : < check match password
+2024-02-26T09:34:21.733+07:00  INFO 20516 --- [http-nio-8080-exec-2] c.f.demo.domain.services.AuthService     : > generate token process: 
+2024-02-26T09:34:21.733+07:00  INFO 20516 --- [http-nio-8080-exec-2] c.f.demo.domain.services.AuthService     : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwaWtpaGE1MkBnbWFpbC5jb20iLCJpYXQiOjE3MDg5MTQ4NjEsImV4cCI6MTcwODkxNjY2MX0.7yN3Uonj-EmzNQ3EWX_bOE03YNRpXNpvm4c3LTb0e0c
+2024-02-26T09:34:21.733+07:00  INFO 20516 --- [http-nio-8080-exec-2] c.f.demo.domain.services.AuthService     : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwaWtpaGE1MkBnbWFpbC5jb20iLCJpYXQiOjE3MDg5MTQ4NjEsImV4cCI6MTcwODkxNDg2M30.dvucOcrR3cphqf5n6cPVkaBpBzKwAZv9khfYCSrRafw
+2024-02-26T09:34:21.733+07:00  INFO 20516 --- [http-nio-8080-exec-2] c.f.demo.domain.services.AuthService     : < generate token process
+2024-02-26T09:34:21.733+07:00  INFO 20516 --- [http-nio-8080-exec-2] c.f.demo.domain.services.AuthService     : == finish processing login ==
+2024-02-26T09:34:21.765+07:00  INFO 20516 --- [http-nio-8080-exec-2] c.f.d.i.filter.LoggingFilter             : org.springframework.security.web.header.HeaderWriterFilter$HeaderWriterResponse@5c3c806a
+2024-02-26T09:34:21.765+07:00  INFO 20516 --- [http-nio-8080-exec-2] c.f.d.i.filter.LoggingFilter             : org.springframework.security.web.header.HeaderWriterFilter$HeaderWriterResponse@5c3c806a
+2024-02-26T09:34:28.450+07:00  INFO 20516 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-26T09:34:28.466+07:00  INFO 20516 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-02-26T09:34:28.478+07:00  INFO 20516 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
