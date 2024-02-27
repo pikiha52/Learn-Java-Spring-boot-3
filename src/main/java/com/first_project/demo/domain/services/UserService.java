@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.first_project.demo.application.request.CreateUser;
@@ -30,10 +29,10 @@ public class UserService implements UserUsecase {
 
     private final CreateUserPort createUserPort;
     private final ListUsersPort listUsersPort;
-    private final PasswordEncoder passwordEncoder;
     private final ShowUserByIdPort showUserByIdPort;
     private final UpdateUserPort updateUserPort;
     private final DeleteUserPort deleteUserPort;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public ResponseEntity<AppResponse<Users>> createUser(CreateUser createUserContract) {
@@ -43,6 +42,7 @@ public class UserService implements UserUsecase {
         users.setEmail(createUserContract.email);
         users.setPhoneNumber(createUserContract.phoneNumber);
         users.setPassword(passwordEncoder.encode(createUserContract.password));
+        users.setUsername(createUserContract.username);
         users.setRoles(createUserContract.roles);
 
         int httpStatus = HttpStatus.CREATED.value();
@@ -73,24 +73,6 @@ public class UserService implements UserUsecase {
     }
 
     @Override
-    public ResponseEntity<AppResponse<UserDetails>> showUser(Long id) {
-        final AppResponse<UserDetails> appResponse = new AppResponse<>();
-
-        Optional<Users> user = showUserByIdPort.findByIdUser(id);
-        if (user == null) {
-            appResponse.setCode(HttpStatus.NOT_FOUND.value());
-            appResponse.setErrorMessage("Not found");
-            appResponse.setMessage("user not found");
-            return ResponseEntity.status(HttpStatus.OK).body(appResponse);
-        }
-
-        appResponse.setCode(HttpStatus.OK.value());
-        appResponse.setMessage("Success");
-        appResponse.setData(user);
-        return ResponseEntity.status(HttpStatus.OK).body(appResponse);
-    }
-
-    @Override
     @Transactional
     public ResponseEntity<AppResponse<Users>> updateUser(Long id, UpdateUser updateUser) {
         final AppResponse<Users> appResponse = new AppResponse<>();
@@ -108,7 +90,7 @@ public class UserService implements UserUsecase {
         data.setFullName(updateUser.fullName);
         data.setEmail(updateUser.email);
         data.setPhoneNumber(updateUser.phoneNumber);
-        data.setPassword(passwordEncoder.encode(updateUser.password));
+        // data.setPassword(passwordEncoder.encode(updateUser.password));
         Users user = updateUserPort.updateUserById(id, data);
 
         appResponse.setData(user);

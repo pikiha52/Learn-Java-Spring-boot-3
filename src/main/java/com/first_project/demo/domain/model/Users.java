@@ -43,6 +43,9 @@ public class Users implements Serializable {
     @Column(name = "roles", length = 55)
     private String roles;
 
+    @Column(name = "username", length = 201)
+    private String username;
+
     @Column(name = "createdAt", nullable = false, updatable = false)
     @CreationTimestamp
     private Date createdAt;

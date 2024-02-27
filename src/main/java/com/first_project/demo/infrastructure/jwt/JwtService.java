@@ -6,7 +6,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders; 
 import io.jsonwebtoken.security.Keys;
 
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.security.Key; 
@@ -64,10 +63,10 @@ public class JwtService {
 		return extractExpiration(token).before(new Date()); 
 	} 
 
-	public Boolean validateToken(String token, UserDetails userDetails) { 
-		final String username = extractEmail(token); 
-		return (username.equals(userDetails.getUsername()) && !isTokenExpired(token)); 
-	} 
+	// public Boolean validateToken(String token, UserDetails userDetails) { 
+	// 	final String username = extractEmail(token); 
+	// 	return (username.equals(userDetails.getUsername()) && !isTokenExpired(token)); 
+	// } 
 
 
 } 

@@ -25,4 +25,8 @@ public class CreateUser {
     @NotNull(message = "property roles is required")
     public String roles;
 
+    @NotBlank(message = "property username is not found")
+    @NotNull(message = "property username is required")
+    public String username;
+
 }

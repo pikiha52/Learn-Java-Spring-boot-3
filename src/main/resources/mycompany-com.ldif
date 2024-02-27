@@ -1,0 +1,28 @@
+dn: ou=groups,dc=mycompany,dc=com
+objectclass: organizationalUnit
+objectclass: top
+ou: groups
+
+dn: cn=user,ou=groups,dc=mycompany,dc=com
+cn: user
+gidnumber: 500
+objectclass: posixGroup
+objectclass: top
+
+dn: ou=users,dc=mycompany,dc=com
+objectclass: organizationalUnit
+objectclass: top
+ou: users
+
+dn: uid=app-user,ou=users,dc=mycompany,dc=com
+cn: App User
+gidnumber: 500
+givenname: App
+homedirectory: /home/users/app-user
+objectclass: inetOrgPerson
+objectclass: posixAccount
+objectclass: top
+sn: User
+uid: app-user
+uidnumber: 1000
+userpassword: {MD5}ICy5YqxZB1uWSwcVLSNLcA==

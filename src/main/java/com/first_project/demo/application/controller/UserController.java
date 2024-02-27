@@ -3,7 +3,6 @@ package com.first_project.demo.application.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,9 +41,10 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AppResponse<UserDetails>> showUser(@PathVariable String id) {
+    public ResponseEntity<AppResponse<String>> showUser(@PathVariable String id) {
         if (id.equals(":id")) throw new BadRequestExceptionCustom("Id not valid.");
-        return userUsecase.showUser(Long.parseLong(id));
+        final AppResponse<String> appResponse = new AppResponse<>();
+        return ResponseEntity.ok().body(appResponse);
     }
 
     @PutMapping("/{id}")
