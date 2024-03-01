@@ -14,15 +14,16 @@ objectclass: organizationalUnit
 objectclass: top
 ou: users
 
-dn: uid=app-user,ou=users,dc=mycompany,dc=com
-cn: App User
+dn: uid=pikiha52,ou=users,dc=mycompany,dc=com
+cn: Pikih Alan
 gidnumber: 500
-givenname: App
-homedirectory: /home/users/app-user
+givenname: Pikih
+homedirectory: /home/users/pikiha52
 objectclass: inetOrgPerson
 objectclass: posixAccount
 objectclass: top
-sn: User
-uid: app-user
+sn: Alan
+uid: pikiha52
+mail: pikiha52@gmail.com
 uidnumber: 1000
 userpassword: {MD5}ICy5YqxZB1uWSwcVLSNLcA==

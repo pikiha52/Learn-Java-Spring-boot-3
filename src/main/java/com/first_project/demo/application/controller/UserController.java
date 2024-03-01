@@ -18,6 +18,7 @@ import com.first_project.demo.application.request.UpdateUser;
 import com.first_project.demo.application.response.AppResponse;
 import com.first_project.demo.common.exception.BadRequestExceptionCustom;
 import com.first_project.demo.domain.model.Users;
+import com.first_project.demo.domain.model.UsersLdap;
 import com.first_project.demo.domain.ports.inbound.UserUsecase;
 
 import jakarta.validation.Valid;
@@ -41,10 +42,9 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AppResponse<String>> showUser(@PathVariable String id) {
+    public ResponseEntity<AppResponse<Users>> showUser(@PathVariable String id) {
         if (id.equals(":id")) throw new BadRequestExceptionCustom("Id not valid.");
-        final AppResponse<String> appResponse = new AppResponse<>();
-        return ResponseEntity.ok().body(appResponse);
+        return userUsecase.showUser(Long.parseLong(id));
     }
 
     @PutMapping("/{id}")
@@ -57,6 +57,17 @@ public class UserController {
     public ResponseEntity<AppResponse<String>> deleteUser(@PathVariable String id, @RequestAttribute("UserData") Users user) {
         if (id.equals(":id")) throw new BadRequestExceptionCustom("Id not valid.");
         return userUsecase.deleteUser(Long.parseLong(id), user);
+    }
+    
+    @GetMapping("/ldaps")
+    public ResponseEntity<AppResponse<List<UsersLdap>>> listUserLdaps() {
+        return userUsecase.ldapUsers();
+    }
+    
+    @GetMapping("/ldaps/{uid}")
+    public ResponseEntity<AppResponse<UsersLdap>> userLdapShow(@PathVariable String uid) {
+        if (uid.equals(":uid")) throw new BadRequestExceptionCustom("Uid not valid.");
+        return userUsecase.showUserLdap(uid);
     }
 
 }

@@ -2,9 +2,11 @@ package com.first_project.demo.domain.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ldap.NameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.first_project.demo.application.request.CreateUser;
@@ -13,12 +15,15 @@ import com.first_project.demo.application.response.AppResponse;
 import com.first_project.demo.application.response.CreateUserResponse;
 import com.first_project.demo.common.customannotations.UseCase;
 import com.first_project.demo.domain.model.Users;
+import com.first_project.demo.domain.model.UsersLdap;
 import com.first_project.demo.domain.ports.inbound.UserUsecase;
 import com.first_project.demo.domain.ports.outbound.user.CreateUserPort;
 import com.first_project.demo.domain.ports.outbound.user.DeleteUserPort;
 import com.first_project.demo.domain.ports.outbound.user.ListUsersPort;
 import com.first_project.demo.domain.ports.outbound.user.ShowUserByIdPort;
+import com.first_project.demo.domain.ports.outbound.user.ShowUserLdapPort;
 import com.first_project.demo.domain.ports.outbound.user.UpdateUserPort;
+import com.first_project.demo.domain.ports.outbound.user.UserLdapsPort;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +38,8 @@ public class UserService implements UserUsecase {
     private final UpdateUserPort updateUserPort;
     private final DeleteUserPort deleteUserPort;
     private final PasswordEncoder passwordEncoder;
+    private final UserLdapsPort userLdapsPort;
+    private final ShowUserLdapPort showUserLdapPort;
 
     @Override
     public ResponseEntity<AppResponse<Users>> createUser(CreateUser createUserContract) {
@@ -70,6 +77,28 @@ public class UserService implements UserUsecase {
         appResponse.setMessage("Success");
         appResponse.setData(users);
         return ResponseEntity.status(HttpStatus.OK).body(appResponse);
+    }
+
+    @Override
+    public ResponseEntity<AppResponse<Users>> showUser(Long id) {
+        final AppResponse<Users> appResponse = new AppResponse<>();
+        Users data = new Users();
+        HttpStatus httpStatus = HttpStatus.OK;
+
+        try {
+            Optional<Users> user = showUserByIdPort.findByIdUser(id);
+            data = user.get();
+            appResponse.setCode(httpStatus.value());
+            appResponse.setMessage("Success");
+            appResponse.setData(data);
+        } catch (Exception e) {
+            httpStatus = HttpStatus.NOT_FOUND;
+            appResponse.setCode(httpStatus.value());
+            appResponse.setMessage("User not found");
+            appResponse.setErrorMessage("Not found");
+        }
+
+        return ResponseEntity.status(httpStatus).body(appResponse);
     }
 
     @Override
@@ -114,16 +143,47 @@ public class UserService implements UserUsecase {
             appResponse.setCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
             appResponse.setMessage("failed deleted");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(appResponse);
-        } 
+        }
 
         Boolean isDeleted = deleteUserPort.deleteUserByIdPort(user.get());
         if (!isDeleted) {
             appResponse.setCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
             appResponse.setMessage("failed deleted");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(appResponse);
-        } 
-        
+        }
+
         return ResponseEntity.status(HttpStatus.OK).body(appResponse);
+    }
+
+    @Override
+    public ResponseEntity<AppResponse<List<UsersLdap>>> ldapUsers() {
+        final AppResponse<List<UsersLdap>> appResponse = new AppResponse<>();
+        List<UsersLdap> usersLdaps = userLdapsPort.allUserLdaps();
+
+        appResponse.setCode(HttpStatus.OK.value());
+        appResponse.setMessage("Succes");
+        appResponse.setData(usersLdaps);
+        return ResponseEntity.status(HttpStatus.OK).body(appResponse);
+    }
+
+    @Override
+    public ResponseEntity<AppResponse<UsersLdap>> showUserLdap(String uid) {
+        final AppResponse<UsersLdap> appResponse = new AppResponse<>();
+        HttpStatus httpStatus = HttpStatus.OK;
+        appResponse.setCode(httpStatus.value());
+        appResponse.setMessage("Success");
+
+        Optional<UsersLdap> userLdap = showUserLdapPort.findByUidLdap(uid);
+        if (userLdap.isEmpty()) {
+            httpStatus = HttpStatus.NOT_FOUND;
+            appResponse.setCode(httpStatus.value());
+            appResponse.setMessage("user not found in ldap");
+            appResponse.setErrorMessage("Not found");
+        } else {
+            appResponse.setData(userLdap.get());
+        }
+
+        return ResponseEntity.status(httpStatus).body(appResponse);
     }
 
 }

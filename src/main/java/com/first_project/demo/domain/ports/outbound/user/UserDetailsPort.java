@@ -1,7 +1,7 @@
 package com.first_project.demo.domain.ports.outbound.user;
 
-import com.first_project.demo.domain.model.Users;
+import org.springframework.security.core.userdetails.UserDetails;
 
 public interface UserDetailsPort {
-    Users userDetailByEmailPort(String email);
+    UserDetails userDetailByEmailPort(String email);
 }

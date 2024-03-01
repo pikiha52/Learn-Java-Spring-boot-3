@@ -109,7 +109,7 @@ public class CustomExceptionHandler {
         appResponse.setCode(HttpStatus.UNAUTHORIZED.value());
         appResponse.setMessage("Unauthorized");
         appResponse.setErrorMessage(errorDetails.getMessage());
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(appResponse);
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(appResponse);
     }
 
 }
